@@ -18,10 +18,10 @@ export default function Navbar() {
   return (
     <header className="bg-[#1a2744] text-white sticky top-0 z-50 shadow-lg">
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <span className="text-white font-bold text-lg tracking-tight">
-            Stockholms IT <span className="text-[#FECC02]">Förening</span>
-          </span>
+        <Link href="/" className="flex items-baseline gap-1.5">
+          <span className="text-[#FECC02] font-bold text-lg tracking-wide">SITF</span>
+          <span className="text-white/25 font-bold">·</span>
+          <span className="text-white font-bold text-lg">Stockholms IT <span className="text-[#FECC02]">Förening</span></span>
         </Link>
 
         {/* Desktop */}

@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="mb-3">
-              <span className="text-white font-bold text-lg tracking-tight">
-                Stockholms IT <span className="text-[#FECC02]">Förening</span>
-              </span>
+            <div className="mb-3 flex items-baseline gap-1.5">
+              <span className="text-[#FECC02] font-bold text-lg tracking-wide">SITF</span>
+              <span className="text-white/25 font-bold">·</span>
+              <span className="text-white font-bold text-lg">Stockholms IT <span className="text-[#FECC02]">Förening</span></span>
             </div>
             <p className="text-sm leading-relaxed">
               En ideell organisation som brinner för att göra en positiv skillnad
