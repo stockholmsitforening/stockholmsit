@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -6,9 +7,14 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-[#FECC02] font-bold text-lg">SITF</span>
-              <span className="text-white text-sm font-medium">Stockholms IT Förening</span>
+            <div className="mb-3">
+              <Image
+                src="/logo.png"
+                alt="Stockholms IT Förening"
+                width={140}
+                height={34}
+                className="rounded"
+              />
             </div>
             <p className="text-sm leading-relaxed">
               En ideell organisation som brinner för att göra en positiv skillnad
