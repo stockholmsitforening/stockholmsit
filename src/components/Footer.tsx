@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="mb-3 flex items-baseline gap-1.5">
-              <span className="text-[#FECC02] font-bold text-lg tracking-wide">SITF</span>
+              <span className="font-bold text-lg tracking-wide"><span className="text-white">SIT</span><span className="text-[#FECC02]">F</span></span>
               <span className="text-white/25 font-bold">·</span>
               <span className="text-white font-bold text-lg">Stockholms IT <span className="text-[#FECC02]">Förening</span></span>
             </div>
