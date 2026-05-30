@@ -19,14 +19,9 @@ export default function Navbar() {
     <header className="bg-[#1a2744] text-white sticky top-0 z-50 shadow-lg">
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="Stockholms IT Förening"
-            width={130}
-            height={32}
-            className="rounded"
-            priority
-          />
+          <span className="text-white font-bold text-lg tracking-tight">
+            Stockholms IT <span className="text-[#FECC02]">Förening</span>
+          </span>
         </Link>
 
         {/* Desktop */}

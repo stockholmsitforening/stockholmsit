@@ -8,13 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="mb-3">
-              <Image
-                src="/logo.png"
-                alt="Stockholms IT Förening"
-                width={140}
-                height={34}
-                className="rounded"
-              />
+              <span className="text-white font-bold text-lg tracking-tight">
+                Stockholms IT <span className="text-[#FECC02]">Förening</span>
+              </span>
             </div>
             <p className="text-sm leading-relaxed">
               En ideell organisation som brinner för att göra en positiv skillnad
