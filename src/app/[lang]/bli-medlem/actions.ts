@@ -5,15 +5,9 @@ import { Resend } from 'resend'
 
 const NOTIFY_EMAIL = 'styrelsen@stockholmsitforening.se'
 
-export type MemberState = {
-  success?: boolean
-  error?: string
-}
+export type MemberState = { success?: boolean; error?: string }
 
-export async function submitMembership(
-  _prev: MemberState,
-  formData: FormData
-): Promise<MemberState> {
+export async function submitMembership(_prev: MemberState, formData: FormData): Promise<MemberState> {
   const firstName = formData.get('first_name') as string
   const lastName = formData.get('last_name') as string
   const email = formData.get('email') as string
