@@ -1,6 +1,5 @@
 'use server'
 
-import { createAdminClient } from '@/lib/supabase/admin'
 import { Resend } from 'resend'
 
 const NOTIFY_EMAIL = 'styrelsen@stockholmsitforening.se'
@@ -23,22 +22,8 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
     return { error: 'Ogiltig e-postadress.' }
   }
 
-  const supabase = createAdminClient()
-  const { error } = await supabase.from('contact_messages').insert({
-    name: name.trim(),
-    email: email.trim().toLowerCase(),
-    city: city.trim(),
-    phone: phone?.trim() || null,
-    message: message.trim(),
-  })
-
-  if (error) {
-    console.error('Contact form error:', error)
-    return { error: 'Något gick fel. Försök igen senare.' }
-  }
-
   const resend = new Resend(process.env.RESEND_API_KEY)
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: 'SITF Webb <noreply@stockholmsitforening.se>',
     to: NOTIFY_EMAIL,
     subject: `Nytt kontaktmeddelande från ${name.trim()}`,
@@ -52,7 +37,12 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
         <tr style="background:#f5f5f5"><td style="padding:8px;font-weight:bold;vertical-align:top">Meddelande</td><td style="padding:8px;white-space:pre-wrap">${message.trim()}</td></tr>
       </table>
     `,
-  }).catch((err) => console.error('Email send error:', err))
+  })
+
+  if (error) {
+    console.error('Email send error:', error)
+    return { error: 'Något gick fel. Försök igen senare.' }
+  }
 
   return { success: true }
 }
