@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://stockholmsitforening.se'),
   title: 'Stockholms IT Förening',
   description: 'En ideell organisation som främjar IT-kunskap och tekniktillgång för alla i samhället.',
 }
