@@ -7,6 +7,9 @@ const NOTIFY_EMAIL = 'styrelsen@stockholmsitforening.se'
 export type ContactState = { success?: boolean; error?: string }
 
 export async function submitContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
+  // Honeypot: bots fill this hidden field, humans never see it
+  if (formData.get('website')) return { success: true }
+
   const name = formData.get('name') as string
   const email = formData.get('email') as string
   const city = formData.get('city') as string

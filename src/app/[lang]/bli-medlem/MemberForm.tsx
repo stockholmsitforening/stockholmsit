@@ -35,6 +35,10 @@ export default function MemberForm({ dict }: { dict: JoinDict }) {
 
   return (
     <form action={action} className="space-y-6">
+      {/* honeypot — invisible to humans, bots fill it */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+      </div>
       {state.error && (
         <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm">{state.error}</div>
       )}

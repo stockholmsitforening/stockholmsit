@@ -7,6 +7,9 @@ const NOTIFY_EMAIL = 'styrelsen@stockholmsitforening.se'
 export type MemberState = { success?: boolean; error?: string }
 
 export async function submitMembership(_prev: MemberState, formData: FormData): Promise<MemberState> {
+  // Honeypot: bots fill this hidden field, humans never see it
+  if (formData.get('website')) return { success: true }
+
   const firstName = formData.get('first_name') as string
   const lastName = formData.get('last_name') as string
   const email = formData.get('email') as string
