@@ -1,6 +1,13 @@
 import Link from 'next/link'
-import { getDictionary, hasLocale } from '../dictionaries'
+import type { Metadata } from 'next'
+import { getDictionary, hasLocale, buildAlternates } from '../dictionaries'
 import { notFound } from 'next/navigation'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  if (!hasLocale(lang)) return {}
+  return { alternates: buildAlternates(lang, '/kurser') }
+}
 
 const courses = [
   { id: 'python', title: 'Python', level: 'Nybörjare', icon: '🐍', desc_sv: 'Kom igång med ett av världens mest använda programmeringsspråk.', desc_en: 'Get started with one of the world\'s most used programming languages.', desc_es: 'Comienza con uno de los lenguajes de programación más utilizados del mundo.', topics: ['Installation av Anaconda', 'Grundläggande datatyper', 'String-metoder', 'Loopar och villkor', 'Funktioner och moduler'] },

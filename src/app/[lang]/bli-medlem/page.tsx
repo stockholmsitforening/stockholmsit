@@ -1,6 +1,13 @@
-import { getDictionary, hasLocale } from '../dictionaries'
+import type { Metadata } from 'next'
+import { getDictionary, hasLocale, buildAlternates } from '../dictionaries'
 import { notFound } from 'next/navigation'
 import MemberForm from './MemberForm'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  if (!hasLocale(lang)) return {}
+  return { alternates: buildAlternates(lang, '/bli-medlem') }
+}
 
 export default async function BliMedlem({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params

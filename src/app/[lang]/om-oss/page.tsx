@@ -1,6 +1,13 @@
 import Link from 'next/link'
-import { getDictionary, hasLocale } from '../dictionaries'
+import type { Metadata } from 'next'
+import { getDictionary, hasLocale, buildAlternates } from '../dictionaries'
 import { notFound } from 'next/navigation'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  if (!hasLocale(lang)) return {}
+  return { alternates: buildAlternates(lang, '/om-oss') }
+}
 
 export default async function OmOss({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params

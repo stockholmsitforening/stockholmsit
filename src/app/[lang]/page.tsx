@@ -1,9 +1,16 @@
 import Link from 'next/link'
-import { getDictionary, hasLocale } from './dictionaries'
+import type { Metadata } from 'next'
+import { getDictionary, hasLocale, buildAlternates } from './dictionaries'
 import { notFound } from 'next/navigation'
 
 const courses = ['Python', 'Machine Learning', 'Deep Learning', 'Linux', 'Cybersäkerhet', 'Cloud Services', 'Dataanalys med MySQL', 'Generativ AI']
 const boardTags = ['Nätverksdesign', 'Cybersäkerhet', 'AI/ML', 'Webbutveckling', 'Dataanalys', 'Linux', 'Cloud', 'Fintech']
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  if (!hasLocale(lang)) return {}
+  return { alternates: buildAlternates(lang) }
+}
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
